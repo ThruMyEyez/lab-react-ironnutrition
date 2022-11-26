@@ -10,6 +10,7 @@ import foods from './foods.json';
 
 const App = () => {
   const [foodList, setFoodList] = useState(foods);
+  const [showForm, setShowForm] = useState(false);
 
   const addFood = (newFoodItem) => {
     setFoodList((prev) => [...prev, newFoodItem]);
@@ -37,12 +38,17 @@ const App = () => {
     setFoodList(filteredProducts);
   };
 
+  const handleShowForm = () => {
+    setShowForm(!showForm);
+  };
+
   return (
     <div className="App">
       {/* Display Add Food component here */}
 
-      <Button> Hide Form / Add New Food </Button>
-      <AddFoodForm addEntry={addFood} />
+      <Button onClick={handleShowForm}> Hide Form / Add New Food </Button>
+
+      {showForm && <AddFoodForm addEntry={addFood} />}
       {/* Display Search component here */}
       <Search filterSearch={filterFood} />
       <Divider>Food List</Divider>
