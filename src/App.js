@@ -3,7 +3,6 @@ import FoodBox from './components/FoodBox';
 import AddFoodForm from './components/AddFoodForm';
 import Search from './components/Search';
 // To start using the pre-made Ant Design components we must first import them:
-//import { Card, Row, Col, Divider, Input, Button } from 'antd';
 import { Row, Divider, Button } from 'antd';
 
 import foods from './foods.json';
@@ -17,12 +16,10 @@ const App = () => {
   };
 
   const deleteFoodEntry = (e) => {
-    //console.log(e)
-    //console.log(e.currentTarget.name);
     const filteredFood = foodList.filter((food) => {
-      console.log(food.name, ' + ', e.currentTarget.name);
       return food.name !== e.currentTarget.name;
     });
+    console.log(foodList.length);
     setFoodList(filteredFood);
   };
 
@@ -55,23 +52,26 @@ const App = () => {
 
       <Row style={{ width: '100%', justifyContent: 'center' }}>
         {/* Render the list of Food Box components here */}
-        <div className="food-box">
-          {foodList.map((food) => {
-            const { name, image, calories, servings } = food;
-            return (
-              <FoodBox
-                deleteEntry={deleteFoodEntry}
-                key={name}
-                food={{
-                  name: name,
-                  calories: calories,
-                  image: image,
-                  servings: servings,
-                }}
-              />
-            );
-          })}
-        </div>
+
+        {(foodList.length && (
+          <div className="food-box">
+            {foodList.map((food) => {
+              const { name, image, calories, servings } = food;
+              return (
+                <FoodBox
+                  deleteEntry={deleteFoodEntry}
+                  key={name}
+                  food={{
+                    name: name,
+                    calories: calories,
+                    image: image,
+                    servings: servings,
+                  }}
+                />
+              );
+            })}
+          </div>
+        )) || <h1>NO Food Entries</h1>}
       </Row>
     </div>
   );
