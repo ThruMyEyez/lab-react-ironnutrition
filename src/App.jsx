@@ -1,10 +1,8 @@
 import { useState } from 'react';
+import { Row, Divider, Button } from 'antd';
 import FoodBox from './components/FoodBox';
 import AddFoodForm from './components/AddFoodForm';
 import Search from './components/Search';
-// To start using the pre-made Ant Design components we must first import them:
-import { Row, Divider, Button } from 'antd';
-
 import foods from './foods.json';
 
 const App = () => {
@@ -41,18 +39,12 @@ const App = () => {
 
   return (
     <div className="App">
-      {/* Display Add Food component here */}
-
       <Button onClick={handleShowForm}> Hide Form / Add New Food </Button>
-
       {showForm && <AddFoodForm addEntry={addFood} />}
-      {/* Display Search component here */}
       <Search filterSearch={filterFood} />
       <Divider>Food List</Divider>
 
-      <Row style={{ width: '100%', justifyContent: 'center' }}>
-        {/* Render the list of Food Box components here */}
-
+      <Row style={{ width: '80%' }}>
         {(foodList.length && (
           <div className="food-box">
             {foodList.map((food) => {
@@ -71,7 +63,7 @@ const App = () => {
               );
             })}
           </div>
-        )) || <h1>NO Food Entries</h1>}
+        )) || <h1>Oops, there are no more Food Entries in the List</h1>}
       </Row>
     </div>
   );

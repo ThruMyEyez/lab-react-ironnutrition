@@ -1,10 +1,5 @@
-// Style Guide:
-// In this file you can find a reference example of the structure
-// and content that the component should render.
-// Remember to import Ant Design components before using them.
 import { Card, Col, Button } from 'antd';
 
-// Iteration 2
 const FoodBox = ({ food, deleteEntry }) => {
   const { image, name, servings, calories } = food;
 
@@ -18,7 +13,7 @@ const FoodBox = ({ food, deleteEntry }) => {
           <b>Total Calories: {calories * servings} </b> kcal
         </p>
         <Button type="primary" onClick={deleteEntry} name={name}>
-          Delete{' '}
+          Delete
         </Button>
       </Card>
     </Col>

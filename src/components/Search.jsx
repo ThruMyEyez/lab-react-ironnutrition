@@ -1,12 +1,7 @@
-// Style Guide:
-// In this file you can find a reference example of the structure
-// and content that the component should render.
-// Remember to import Ant Design components before using them.
 import { useState } from 'react';
 import { Divider, Input } from 'antd';
 
-// Iteration 5
-const Search = ({ filterSearch, searchTerm }) => {
+const Search = ({ filterSearch }) => {
   const [searchText, setSearchText] = useState('');
 
   const handleSearchInput = (e) => {
@@ -18,8 +13,15 @@ const Search = ({ filterSearch, searchTerm }) => {
     <>
       <Divider>Search</Divider>
 
-      <label>Search</label>
-      <Input value={searchText} type="text" onChange={handleSearchInput} />
+      <label>
+        Search
+        <Input
+          placeholder="Search query.."
+          value={searchText}
+          type="text"
+          onChange={handleSearchInput}
+        />
+      </label>
     </>
   );
 };
