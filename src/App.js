@@ -15,6 +15,16 @@ const App = () => {
     setFoodList((prev) => [...prev, newFoodItem]);
   };
 
+  const deleteFoodEntry = (e) => {
+    //console.log(e)
+    //console.log(e.currentTarget.name);
+    const filteredFood = foodList.filter((food) => {
+      console.log(food.name, ' + ', e.currentTarget.name);
+      return food.name !== e.currentTarget.name;
+    });
+    setFoodList(filteredFood);
+  };
+
   const filterFood = (str) => {
     let filteredProducts;
     if (str === '') {
@@ -44,6 +54,8 @@ const App = () => {
             const { name, image, calories, servings } = food;
             return (
               <FoodBox
+                deleteEntry={deleteFoodEntry}
+                key={name}
                 food={{
                   name: name,
                   calories: calories,
@@ -56,27 +68,7 @@ const App = () => {
         </div>
       </Row>
     </div>
-    /* <div className="App">
-      <h2>Food List</h2>
-
-      {foods.map((food) => {
-        const { name, image, calories, servings } = food;
-        return (
-          <FoodBox
-            food={{
-              name: name,
-              calories: calories,
-              image: image,
-              servings: servings,
-            }}
-          />
-        );
-      })}
-    </div> */
   );
 };
 
 export default App;
-/* 
-            <img src={image} alt={name} width={120} />
-*/
